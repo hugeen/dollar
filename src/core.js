@@ -1,6 +1,12 @@
+import {
+    arr, document, slice, concat,
+    push, indexOf, class2type, toString, hasOwn, support
+} from './var'
+import DOMEval from './core/dom_eval'
+
+
+
 const version = '@VERSION'
-const array = []
-const slice = array.slice
 
 
 
@@ -21,9 +27,9 @@ jQuery.fn = jQuery.prototype = {
 
     push: push,
 
-    sort: array.sort,
+    sort: arr.sort,
 
-    splice: array.splice,
+    splice: arr.splice,
 
 
 
@@ -335,7 +341,7 @@ jQuery.extend({
 
         if (arr !== null) {
             if (isArrayLike(Object(arr))) {
-                jQuery.merge(ret, typeof arr === 'string' ? [ arr ] : arr)
+                jQuery.merge(ret, typeof arr === 'string' ? [arr] : arr)
             } else {
                 push.call(ret, arr)
             }
