@@ -1,4 +1,4 @@
-const version = "@VERSION"
+const version = '@VERSION'
 const array = []
 const slice = array.slice
 
@@ -57,7 +57,7 @@ jQuery.fn = jQuery.prototype = {
 
 
     map: function (callback) {
-        return this.pushStack(jQuery.map(this, function(elem, i) {
+        return this.pushStack(jQuery.map(this, function (elem, i) {
             return callback.call(elem, i, elem)
         }))
     },
@@ -77,7 +77,7 @@ jQuery.fn = jQuery.prototype = {
 
 
     last: function () {
-        return this.eq(-1);
+        return this.eq(-1)
     },
 
 
@@ -109,7 +109,7 @@ jQuery.extend = jQuery.fn.extend = function () {
 
 
     // Handle a deep copy situation
-    if (typeof target === "boolean") {
+    if (typeof target === 'boolean') {
         deep = target
         target = arguments[i] || {}
         i++
@@ -117,7 +117,7 @@ jQuery.extend = jQuery.fn.extend = function () {
 
 
     // Handle case when target is a string or something (possible in deep copy)
-    if (typeof target !== "object" && !jQuery.isFunction(target)) {
+    if (typeof target !== 'object' && !jQuery.isFunction(target)) {
         target = {}
     }
 
@@ -139,7 +139,7 @@ jQuery.extend = jQuery.fn.extend = function () {
             // Extend the base object
             for (name in options) {
                 src = target[name]
-                copy = options[name];
+                copy = options[name]
 
 
                 // Prevent never-ending loop
@@ -183,7 +183,7 @@ jQuery.extend({
 
     isReady: true,
 
-    noop: function() {},
+    noop: function () {},
 
     isArray: Array.isArray,
 
@@ -201,13 +201,13 @@ jQuery.extend({
 
 
     isFunction: function (object) {
-        return jQuery.type(object) === "function"
+        return jQuery.type(object) === 'function'
     },
 
 
 
     isWindow: function (object) {
-        return object !== null && object === object.window;
+        return object !== null && object === object.window
     },
 
 
@@ -271,7 +271,7 @@ jQuery.extend({
         // Support: Android<4.0 (functionish RegExp)
         return typeof object === 'object' || typeof object === 'function' ?
             class2type[toString.call(object)] || 'object' :
-            typeof object;
+            typeof object
     },
 
 
@@ -297,8 +297,9 @@ jQuery.extend({
 
 
 
-    each: function(object, callback) {
-        var length, i = 0
+    each: function (object, callback) {
+        let count
+        let i = 0
 
 
         if (isArrayLike(object)) {
@@ -330,7 +331,7 @@ jQuery.extend({
 
 
     makeArray: function (arr, results) {
-        var ret = results || []
+        let ret = results || []
 
         if (arr !== null) {
             if (isArrayLike(Object(arr))) {
@@ -354,7 +355,7 @@ jQuery.extend({
     // Support: Android<4.1, PhantomJS<2
     // push.apply(_, arraylike) throws on ancient WebKit
     merge: function (first, second) {
-        var len = +second.length,
+        let len = +second.length,
             j = 0,
             i = first.length
 
@@ -369,8 +370,8 @@ jQuery.extend({
 
 
 
-    grep: function(elems, callback, invert) {
-        var callbackInverse,
+    grep: function (elems, callback, invert) {
+        let callbackInverse,
             matches = [],
             i = 0,
             length = elems.length,
@@ -392,8 +393,8 @@ jQuery.extend({
 
 
 
-    map: function(elems, callback, arg) {
-        var length, value,
+    map: function (elems, callback, arg) {
+        let length, value,
             i = 0,
             ret = []
 
@@ -430,7 +431,7 @@ jQuery.extend({
     // Bind a function to a context, optionally partially applying any
     // arguments.
     proxy: function (fn, context) {
-        var tmp, args, proxy
+        let tmp, args, proxy
 
         if (typeof context === 'string') {
             tmp = fn[context]
@@ -470,8 +471,8 @@ if (typeof Symbol === 'function') {
 
 
 // Populate the class2type map
-jQuery.each('Boolean Number String Function Array Date RegExp Object Error Symbol'.split(' '),
-function (i, name) {
+const types = 'Boolean Number String Function Array Date RegExp Object Error Symbol'.split(' ')
+jQuery.each(types, function (i, name) {
     class2type['[object ' + name + ']' ] = name.toLowerCase()
 })
 
@@ -483,13 +484,13 @@ function isArrayLike (object) {
     // `in` check used to prevent JIT error (gh-2145)
     // hasOwn isn't used here due to false negatives
     // regarding Nodelist length in IE
-    var length = !!object && 'length' in object && object.length,
-        type = jQuery.type(object)
+    const count = !!object && 'length' in object && object.length
+    const type = jQuery.type(object)
 
     if (type === 'function' || jQuery.isWindow(object)) {
         return false
     }
 
-    return type === 'array' || length === 0 ||
-        typeof length === 'number' && length > 0 && (length - 1) in object
+    return type === 'array' || count === 0 ||
+        typeof count === 'number' && count > 0 && (count - 1) in object
 }
